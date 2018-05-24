@@ -12598,7 +12598,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># all outliers</span>
@@ -12639,7 +12639,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 <span class="c1"># Remove the outliers, if any were specified</span>
 <span class="n">good_data</span> <span class="o">=</span> <span class="n">log_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">log_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">outliers_mult</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="c1">#good_data = log_data.drop(log_data.index[outliers]).reset_index(drop = True)</span>
-<span class="c1">#print(good_data.shape)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">good_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13401,6 +13401,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[65, 66, 128, 154, 75]
+(435, 6)
 </pre>
 </div>
 </div>
@@ -13462,7 +13463,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">PCA</span>
@@ -13506,7 +13507,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display cumulative sums of the explained variance ratios</span>
@@ -13523,7 +13524,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[35]:</div>
 
 
 
@@ -13650,10 +13651,10 @@ Once you have performed this implementation, the dataset will be stored in the v
 <li>Variance explained by first two components = 70.68%</li>
 <li>Variance explained by first four components = 93.11%</li>
 </ul>
-<p>The first component gives more weightage to Detergents_Paper and also large weights for Milk and Grocery. This component could help in identifying supermarkets.</p>
-<p>The second component gives large weightage to Fresh, Frozen and Delicatessen. This component could help in identifying restaurants.</p>
-<p>The third component gives large weightage to Delicatessen and Fresh. This component could help in identifying deli type customers.</p>
-<p>The fourth component gives large weightage for Frozen and Delicatessen.</p>
+<p>The first component gives more weightage to Fresh and Frozen and lower weight to the other categores with Detergents_Paper being the lowest. A data point (customer) having high value in the first component will have a relatively higher spend in Fresh and Frozen categories and relatively lower spend in Detergents_Paper, Milk and Grocery.</p>
+<p>The second component gives larger weightage to Detergents_Paper, Milk and Grocery and lower weights to Fresh, Frozen and Delicatessen. A customer having high value in the second component will have a relatively higher spend in Detergents_Paper, Milk and Grocery categories and relatively lower spend in Fresh, Frozen and Delicatessen categories.</p>
+<p>The third component gives larger weightage to Delicatessen and Frozen and low weight to Fresh. A customer having high value in the third component would have relatively higher spends on Delicatessen and Frozen and relatively lower spends on Fresh.</p>
+<p>The fourth component gives large weightage for Frozen and low weight for Delicatessen. A customer having high value in the fourth component would have relatively higher spends on Frozen and relatively lower spends on Delicatessen.</p>
 
 </div>
 </div>
@@ -13773,7 +13774,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Apply PCA by fitting the good data with only two dimensions</span>
@@ -13889,7 +13890,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a biplot</span>
@@ -13906,13 +13907,13 @@ Once you have performed this implementation, the dataset will be stored in the v
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[22]:</div>
+<div class="prompt output_prompt">Out[37]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x108debd0&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x106d4a10&gt;</pre>
 </div>
 
 </div>
@@ -13942,15 +13943,6 @@ Once you have performed this implementation, the dataset will be stored in the v
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Observation">Observation<a class="anchor-link" href="#Observation">&#182;</a></h3><p>Once we have the original feature projections (in red), it is easier to interpret the relative position of each data point in the scatterplot. For instance, a point the lower right corner of the figure will likely correspond to a customer that spends a lot on <code>'Milk'</code>, <code>'Grocery'</code> and <code>'Detergents_Paper'</code>, but not so much on the other product categories.</p>
 <p>From the biplot, which of the original features are most strongly correlated with the first component? What about those that are associated with the second component? Do these observations agree with the pca_results plot you obtained earlier?</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong> Looking at the biplot, Detergents_Paper, Grocery and Milk are most strongly correlated with the first component while Frozen, Fresh and Delicatessen are strongly correlated with the second. This is consistent with the earlier pca_results plot.</p>
 
 </div>
 </div>
